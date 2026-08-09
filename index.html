@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sumit Devani — Video Editor · Motion · 3D Designer</title>
+<meta name="description" content="Sumit Devani — Premium video editing, motion graphics, graphic design & 3D visualization."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Instrument+Serif:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-inner">
+    <div class="loader-logo">◆</div>
+    <div class="loader-text">SUMIT DEVANI</div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+  </div>
+</div>
+
+<!-- AMBIENT BACKGROUND -->
+<div class="ambient-bg">
+  <div class="ambient-blob b1"></div>
+  <div class="ambient-blob b2"></div>
+  <div class="ambient-blob b3"></div>
+  <div class="ambient-grid"></div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#home" class="logo" data-cursor="hover">
+      <span class="logo-icon">◆</span>
+      <span class="logo-text">Sumit<em>.Devani</em></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#reel" data-cursor="hover">Reel</a></li>
+      <li><a href="#services" data-cursor="hover">Services</a></li>
+      <li><a href="#influencer" data-cursor="hover">Influencer</a></li>
+      <li><a href="#skills" data-cursor="hover">Skills</a></li>
+      <li><a href="#contact" data-cursor="hover">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn-pill magnetic" data-cursor="hover">
+      <span>Hire Me</span>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="home" class="hero">
+  <div class="hero-container">
+    <div class="hero-badge reveal">
+      <span class="pulse-dot"></span>
+      Available for new projects · 2025
+    </div>
+
+    <h1 class="hero-title reveal">
+      Crafting videos<br/>
+      that <span class="italic">move people</span>
+    </h1>
+
+    <p class="hero-sub reveal">
+      Professional video editor · motion designer · graphic artist · 3D creator.<br/>
+      Turning ideas into stories that grab attention & drive results.
+    </p>
+
+    <div class="hero-cta reveal">
+      <a href="#reel" class="btn-primary magnetic" data-cursor="hover">
+        <span class="btn-icon">▶</span>
+        <span>Watch Reel</span>
+      </a>
+      <a href="#contact" class="btn-ghost magnetic" data-cursor="hover">
+        <span>Start a Project</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+      </a>
+    </div>
+
+    <div class="hero-scroll reveal">
+      <span>Scroll to explore</span>
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+
+  <!-- Marquee brand strip -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>◆ Premiere Pro</span>
+      <span>● After Effects</span>
+      <span>◈ DaVinci Resolve</span>
+      <span>▲ CapCut</span>
+      <span>◇ Cinema 4D</span>
+      <span>● Blender</span>
+      <span>◆ KeyShot</span>
+      <span>▲ Photoshop</span>
+      <span>◈ Illustrator</span>
+      <span>● CorelDRAW</span>
+      <span>◆ Premiere Pro</span>
+      <span>● After Effects</span>
+      <span>◈ DaVinci Resolve</span>
+      <span>▲ CapCut</span>
+      <span>◇ Cinema 4D</span>
+      <span>● Blender</span>
+    </div>
+  </div>
+</header>
+
+<!-- VIDEO REEL -->
+<section id="reel" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">◆ Featured Reel</span>
+      <h2 class="section-title">Video editing<br/><span class="italic">that speaks volumes</span></h2>
+      <p class="section-desc">A curated selection of my recent video edits, motion graphics & cinematic work.</p>
+    </div>
+
+    <!-- Hero Video Player -->
+    <div class="hero-video reveal">
+      <div class="hv-glow"></div>
+      <div class="hv-frame">
+        <iframe src="https://www.youtube.com/embed/AZoFnmWVcgA?rel=0&modestbranding=1"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="hv-meta">
+        <div>
+          <span class="chip highlight">🎬 Featured Edit</span>
+          <h3>Cinematic Movie Edit</h3>
+          <p>Full-length movie with pro color grading, sound design & narrative pacing.</p>
+        </div>
+        <a href="https://youtu.be/AZoFnmWVcgA" target="_blank" class="btn-outline magnetic" data-cursor="hover">
+          Open YouTube ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- 3D COVERFLOW: Videos -->
+    <div class="cf-block reveal">
+      <div class="cf-head">
+        <div>
+          <span class="eyebrow small">◆ Video Works</span>
+          <h3>Edits & Reels</h3>
+        </div>
+        <div class="cf-controls">
+          <p class="cf-counter"><span id="videoCurrent">1</span> / <span id="videoTotal">8</span></p>
+          <button class="cf-btn magnetic" data-cursor="hover" onclick="cfMove('videos', -1)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18L9 12L15 6"/></svg>
+          </button>
+          <button class="cf-btn magnetic" data-cursor="hover" onclick="cfMove('videos', 1)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6L15 12L9 18"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="cf-wrap">
+        <div class="cf" id="videosCoverflow">
+          <div class="cf-card" data-cursor="view" data-video="https://drive.google.com/file/d/1U22Yjw-8hfeVJOlRK0v2KIj8nPiTw3i-/preview">
+            <div class="cf-media">
+              <iframe src="" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+              <button class="cf-mute" onclick="toggleMute(this, event)">🔊</button>
+              <div class="cf-shine"></div>
+            </div>
+            <div class="cf-info">
+              <small>Brand Promo</small>
+              <h4>Project 01</h4>
+            </div>
+          </div>
+
+          <div class="cf-card" data-cursor="view" data-video="https://drive.google.com/file/d/1objUMuC0ek0r0Q33Wl6P6j7CTcLOkzSW/preview">
+            <div class="cf-media">
+              <iframe src="" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+              <button class="cf-mute" onclick="toggleMute(this, event)">🔊</button>
+              <div class="cf-shine"></div>
+            </div>
+            <div class="cf-info">
+              <small>Teaser</small>
+              <h4>Movie Teaser</h4>
+            </div>
+          </div>
+
+          <div class="cf-card" data-cursor="view" data-video="https://www.youtube.com/embed/AZoFnmWVcgA?rel=0">
+            <div class="cf-media">
+              <iframe src="" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+              <button class="cf-mute" onclick="toggleMute(this, event)">🔊</button>
+              <div class="cf-shine"></div>
+            </div>
+            <div class="cf-info">
+              <small>Feature Film</small>
+              <h4>Movie Edit</h4>
+            </div>
+          </div>
+
+          <div class="cf-card" data-cursor="view" data-video="https://www.youtube.com/embed/MORpTTm7uwo?rel=0">
+            <div class="cf-media">
+              <iframe src="" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+              <button class="cf-mute" onclick="toggleMute(this, event)">🔊</button>
+              <div class="cf-shine"></div>
+            </div>
+            <div class="cf-info">
+              <small>Trailer</small>
+              <h4>Movie Trailer</h4>
+            </div>
+          </div>
+
+          <div class="cf-card" data-cursor="view" data-video="https://drive.google.com/file/d/PUT_FILE_ID/preview">
+            <div class="cf-media">
+              <iframe src="" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+              <button class="cf-mute" onclick="toggleMute(this, event)">🔊</button>
+              <div class="cf-shine"></div>
+            </div>
+            <div class="cf-info">
+              <small>Reel</small>
+              <h4>Social Reel</h4>
+            </div>
+          </div>
+
+          <div class="cf-card" data-cursor="view" data-video="https://drive.google.com/file/d/PUT_FILE_ID/preview">
+            <div class="cf-media">
+              <iframe src="" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+              <button class="cf-mute" onclick="toggleMute(this, event)">🔊</button>
+              <div class="cf-shine"></div>
+            </div>
+            <div class="cf-info">
+              <small>Wedding</small>
+              <h4>Cinematic Edit</h4>
+            </div>
+          </div>
+
+          <div class="cf-card" data-cursor="view" data-video="https://drive.google.com/file/d/PUT_FILE_ID/preview">
+            <div class="cf-media">
+              <iframe src="" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+              <button class="cf-mute" onclick="toggleMute(this, event)">🔊</button>
+              <div class="cf-shine"></div>
+            </div>
+            <div class="cf-info">
+              <small>Motion</small>
+              <h4>Motion Graphics</h4>
+            </div>
+          </div>
+
+          <div class="cf-card" data-cursor="view" data-video="https://drive.google.com/file/d/PUT_FILE_ID/preview">
+            <div class="cf-media">
+              <iframe src="" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+              <button class="cf-mute" onclick="toggleMute(this, event)">🔊</button>
+              <div class="cf-shine"></div>
+            </div>
+            <div class="cf-info">
+              <small>Promo</small>
+              <h4>Product Promo</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3D COVERFLOW: Graphics -->
+    <div class="cf-block reveal">
+      <div class="cf-head">
+        <div>
+          <span class="eyebrow small">◇ Graphics & 3D</span>
+          <h3>Design Work</h3>
+        </div>
+        <div class="cf-controls">
+          <p class="cf-counter"><span id="graphicsCurrent">1</span> / <span id="graphicsTotal">4</span></p>
+          <button class="cf-btn magnetic" data-cursor="hover" onclick="cfMove('graphics', -1)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18L9 12L15 6"/></svg>
+          </button>
+          <button class="cf-btn magnetic" data-cursor="hover" onclick="cfMove('graphics', 1)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6L15 12L9 18"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="cf-wrap">
+        <div class="cf wide" id="graphicsCoverflow">
+          <div class="cf-card wide" data-cursor="view" data-video="https://drive.google.com/file/d/1objUMuC0ek0r0Q33Wl6P6j7CTcLOkzSW/preview">
+            <div class="cf-media">
+              <iframe src="" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+              <button class="cf-mute" onclick="toggleMute(this, event)">🔊</button>
+              <div class="cf-shine"></div>
+            </div>
+            <div class="cf-info">
+              <small>3D Design</small>
+              <h4>Project 01</h4>
+            </div>
+          </div>
+
+          <div class="cf-card wide" data-cursor="view" data-video="https://drive.google.com/file/d/PUT_FILE_ID/preview">
+            <div class="cf-media">
+              <iframe src="" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+              <button class="cf-mute" onclick="toggleMute(this, event)">🔊</button>
+              <div class="cf-shine"></div>
+            </div>
+            <div class="cf-info">
+              <small>Brand Design</small>
+              <h4>Project 02</h4>
+            </div>
+          </div>
+
+          <div class="cf-card wide" data-cursor="view" data-video="https://drive.google.com/file/d/PUT_FILE_ID/preview">
+            <div class="cf-media">
+              <iframe src="" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+              <button class="cf-mute" onclick="toggleMute(this, event)">🔊</button>
+              <div class="cf-shine"></div>
+            </div>
+            <div class="cf-info">
+              <small>3D Render</small>
+              <h4>Project 03</h4>
+            </div>
+          </div>
+
+          <div class="cf-card wide" data-cursor="view" data-video="https://drive.google.com/file/d/PUT_FILE_ID/preview">
+            <div class="cf-media">
+              <iframe src="" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+              <button class="cf-mute" onclick="toggleMute(this, event)">🔊</button>
+              <div class="cf-shine"></div>
+            </div>
+            <div class="cf-info">
+              <small>Poster</small>
+              <h4>Project 04</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">◈ Services</span>
+      <h2 class="section-title">Creative services that<br/><span class="italic">deliver real impact</span></h2>
+      <p class="section-desc">Video editing is my primary craft — with full creative production support.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal featured" data-cursor="hover">
+        <div class="service-glow"></div>
+        <div class="service-mockup video-mock">
+          <div class="mock-bar"><span></span><span></span><span></span></div>
+          <div class="mock-timeline">
+            <div class="mock-track"></div>
+            <div class="mock-track short"></div>
+            <div class="mock-track medium"></div>
+          </div>
+          <div class="mock-play">▶</div>
+        </div>
+        <span class="service-tag">⭐ Primary</span>
+        <h3>Video Editing</h3>
+        <p>Cinematic edits, reels, promos, YouTube content with pro color grading.</p>
+      </div>
+
+      <div class="service-card reveal" data-cursor="hover">
+        <div class="service-mockup motion-mock">
+          <div class="ms s1"></div>
+          <div class="ms s2"></div>
+          <div class="ms s3"></div>
+        </div>
+        <h3>Motion Graphics</h3>
+        <p>Animated logos, title sequences, explainers & kinetic typography.</p>
+      </div>
+
+      <div class="service-card reveal" data-cursor="hover">
+        <div class="service-mockup design-mock">
+          <div class="mc c1"></div>
+          <div class="mc c2"></div>
+          <div class="mc c3"></div>
+          <div class="mc c4"></div>
+          <div class="mt">Aa</div>
+        </div>
+        <h3>Graphic Design</h3>
+        <p>Brand identity, social creatives, thumbnails, posters & print.</p>
+      </div>
+
+      <div class="service-card reveal" data-cursor="hover">
+        <div class="service-mockup td-mock">
+          <div class="cube">
+            <div class="cf-face top"></div>
+            <div class="cf-face front"></div>
+            <div class="cf-face side"></div>
+          </div>
+        </div>
+        <h3>3D Design</h3>
+        <p>Product visualization, jewellery renders & cinematic 3D animation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFLUENCER -->
+<section id="influencer" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow pink">● Live Collab</span>
+      <h2 class="section-title">Editing for<br/><span class="italic">Roshni Vekariya</span></h2>
+      <p class="section-desc">Complete video editing & content strategy for a growing lifestyle creator.</p>
+    </div>
+
+    <div class="roshni-block reveal">
+      <div class="roshni-info">
+        <div class="roshni-header">
+          <div class="ig-ring">
+            <div class="ig-inner">R</div>
+          </div>
+          <div>
+            <h3>@roshni.vekariya_</h3>
+            <p>Lifestyle & Fashion Creator</p>
+          </div>
+        </div>
+        <p class="roshni-desc">
+          End-to-end video editing, reels production, transitions, effects & creative content strategy — helping build a strong personal brand across Instagram.
+        </p>
+        <div class="stat-row">
+          <div class="stat-cell">
+            <strong>100<span>+</span></strong>
+            <small>Reels Edited</small>
+          </div>
+          <div class="stat-cell">
+            <strong>3<span>×</span></strong>
+            <small>Growth</small>
+          </div>
+          <div class="stat-cell">
+            <strong>∞</strong>
+            <small>Ongoing</small>
+          </div>
+        </div>
+        <a href="https://www.instagram.com/roshni.vekariya_/?hl=en" target="_blank" class="btn-primary magnetic" data-cursor="hover">
+          <span>View Instagram</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>
+      </div>
+
+      <div class="reels-showcase">
+        <div class="reel-frame f1">
+          <iframe src="https://www.instagram.com/roshni.vekariya_/embed/" frameborder="0" scrolling="no" loading="lazy"></iframe>
+        </div>
+        <div class="reel-frame f2">
+          <iframe src="https://www.instagram.com/roshni.vekariya_/embed/" frameborder="0" scrolling="no" loading="lazy"></iframe>
+        </div>
+        <div class="reel-frame f3">
+          <iframe src="https://www.instagram.com/roshni.vekariya_/embed/" frameborder="0" scrolling="no" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section stats-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">✦ Numbers</span>
+      <h2 class="section-title">Proven results<br/><span class="italic">you can trust</span></h2>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card reveal" data-cursor="hover">
+        <div class="stat-icon">✦</div>
+        <h3 class="counter-num" data-target="200">0</h3>
+        <span class="stat-unit">%</span>
+        <p>Avg. engagement lift</p>
+      </div>
+      <div class="stat-card reveal" data-cursor="hover">
+        <div class="stat-icon">◆</div>
+        <h3 class="counter-num" data-target="100">0</h3>
+        <span class="stat-unit">+</span>
+        <p>Videos edited</p>
+      </div>
+      <div class="stat-card reveal" data-cursor="hover">
+        <div class="stat-icon">●</div>
+        <h3 class="counter-num" data-target="10">0</h3>
+        <span class="stat-unit">+</span>
+        <p>Software mastered</p>
+      </div>
+      <div class="stat-card reveal" data-cursor="hover">
+        <div class="stat-icon">✧</div>
+        <h3 class="counter-num" data-target="3">0</h3>
+        <span class="stat-unit">+ yrs</span>
+        <p>Experience</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">◈ Toolkit</span>
+      <h2 class="section-title">Software stack<br/><span class="italic">& expertise</span></h2>
+      <p class="section-desc">Industry-standard tools I use every day.</p>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card featured reveal" data-cursor="hover">
+        <div class="skill-glow"></div>
+        <div class="skill-head">
+          <span class="chip highlight">🎬 Video & Motion</span>
+          <span class="popular">Primary</span>
+        </div>
+        <ul class="skill-list">
+          <li>Adobe Premiere Pro</li>
+          <li>Adobe After Effects</li>
+          <li>DaVinci Resolve</li>
+          <li>CapCut Pro</li>
+        </ul>
+        <a href="#contact" class="btn-primary full magnetic" data-cursor="hover">
+          Book Video Project ↗
+        </a>
+      </div>
+
+      <div class="skill-card reveal" data-cursor="hover">
+        <div class="skill-head">
+          <span class="chip">🎨 Graphic Design</span>
+        </div>
+        <ul class="skill-list">
+          <li>Adobe Photoshop</li>
+          <li>Adobe Illustrator</li>
+          <li>Canva Pro</li>
+          <li>CorelDRAW</li>
+        </ul>
+        <a href="#contact" class="btn-outline full magnetic" data-cursor="hover">
+          Book Design ↗
+        </a>
+      </div>
+
+      <div class="skill-card reveal" data-cursor="hover">
+        <div class="skill-head">
+          <span class="chip">🧊 3D Design</span>
+        </div>
+        <ul class="skill-list">
+          <li>Cinema 4D</li>
+          <li>KeyShot</li>
+          <li>Blender</li>
+          <li>Matrix 9 · Rhino</li>
+        </ul>
+        <a href="#contact" class="btn-outline full magnetic" data-cursor="hover">
+          Book 3D ↗
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">◇ About Me</span>
+      <h2 class="section-title">The creator<br/><span class="italic">behind the craft</span></h2>
+    </div>
+
+    <div class="about-card reveal" data-cursor="hover">
+      <div class="about-avatar">SD</div>
+      <div class="about-body">
+        <h3>Hi, I'm Sumit Devani 👋</h3>
+        <p>
+          I'm a professional <strong>video editor</strong> with expertise in motion graphics, graphic design, and 3D visualization. Based in India, I work with creators, influencers, agencies, and brands worldwide to craft videos that grab attention and deliver results.
+        </p>
+        <p>
+          From cinematic movie edits and viral reels to jewellery 3D renders and brand identities — I blend creativity with technical precision. <em>Every frame matters.</em>
+        </p>
+        <div class="about-links">
+          <a href="https://www.linkedin.com/in/sumitdevani/" target="_blank" class="mini-link magnetic" data-cursor="hover">💼 LinkedIn</a>
+          <a href="https://www.instagram.com/smeet_devani/?hl=en" target="_blank" class="mini-link magnetic" data-cursor="hover">📸 @smeet_devani</a>
+          <a href="https://www.instagram.com/3.45am.stories/?hl=en" target="_blank" class="mini-link magnetic" data-cursor="hover">🌙 @3.45am.stories</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">? FAQ</span>
+      <h2 class="section-title">Your questions<br/><span class="italic">answered</span></h2>
+    </div>
+
+    <div class="faq-list reveal">
+      <details class="faq-item" open>
+        <summary data-cursor="hover">What type of videos do you edit?</summary>
+        <div class="faq-body"><p>All kinds — YouTube long-form, Instagram reels, movie edits, teasers, brand promos, product videos, wedding films, and more. Video editing is my primary craft.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary data-cursor="hover">How do we start a project?</summary>
+        <div class="faq-body"><p>Fill out the contact form below. I'll respond within 24 hours, we'll discuss your needs, and I'll share a proposal with timeline & pricing.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary data-cursor="hover">What are your turnaround times?</summary>
+        <div class="faq-body"><p>Reels: 2–3 days · Full videos: 5–10 days · 3D renders: 3–7 days · Movie edits: custom timeline. Rush delivery available.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary data-cursor="hover">Do you work with international clients?</summary>
+        <div class="faq-body"><p>Absolutely! I work remotely with clients worldwide via WhatsApp, email, or video calls. Payment in INR, USD, EUR.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary data-cursor="hover">Can I see your complete portfolio?</summary>
+        <div class="faq-body"><p>Yes! Fill the contact form and you'll instantly unlock my full portfolio archive plus downloadable resume.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">✧ Let's Connect</span>
+      <h2 class="section-title">Have a project<br/><span class="italic">in mind?</span></h2>
+      <p class="section-desc">Fill the form to instantly unlock my full resume & portfolio archive.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <a href="https://wa.me/919313429998" target="_blank" class="c-tile magnetic" data-cursor="hover">
+          <span class="c-emoji">💬</span>
+          <div><strong>WhatsApp</strong><small>+91 93134 29998</small></div>
+          <span class="c-arrow">↗</span>
+        </a>
+        <a href="tel:+919313429998" class="c-tile magnetic" data-cursor="hover">
+          <span class="c-emoji">📞</span>
+          <div><strong>Direct Call</strong><small>+91 93134 29998</small></div>
+          <span class="c-arrow">↗</span>
+        </a>
+        <a href="https://www.linkedin.com/in/sumitdevani/" target="_blank" class="c-tile magnetic" data-cursor="hover">
+          <span class="c-emoji">💼</span>
+          <div><strong>LinkedIn</strong><small>/in/sumitdevani</small></div>
+          <span class="c-arrow">↗</span>
+        </a>
+        <a href="https://www.instagram.com/smeet_devani/?hl=en" target="_blank" class="c-tile magnetic" data-cursor="hover">
+          <span class="c-emoji">📸</span>
+          <div><strong>Instagram</strong><small>@smeet_devani</small></div>
+          <span class="c-arrow">↗</span>
+        </a>
+      </div>
+
+      <form id="contactForm" class="contact-form reveal">
+        <div class="form-glow"></div>
+        <h3>Let's Connect</h3>
+        <p class="form-intro">Get instant access to resume + full portfolio</p>
+
+        <div class="form-row">
+          <label>
+            <input type="text" name="name" required placeholder=" "/>
+            <span>Full Name*</span>
+          </label>
+          <label>
+            <input type="email" name="email" required placeholder=" "/>
+            <span>Email*</span>
+          </label>
+        </div>
+        <label>
+          <input type="tel" name="phone" placeholder=" "/>
+          <span>Phone / WhatsApp</span>
+        </label>
+        <label>
+          <select name="project" required>
+            <option value="">— Select Project Type* —</option>
+            <option>Video Editing</option>
+            <option>Motion Graphics</option>
+            <option>Graphic Design</option>
+            <option>3D Design</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label>
+          <textarea name="message" rows="3" required placeholder=" "></textarea>
+          <span>Tell me about your project*</span>
+        </label>
+
+        <button type="submit" class="btn-primary full magnetic" data-cursor="hover">
+          <span>Submit & Unlock Resume</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </button>
+        <p class="form-note">🔒 Your details are private. Resume & portfolio unlocked instantly.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div id="successModal" class="modal hidden">
+  <div class="modal-inner">
+    <div class="check-orb">✓</div>
+    <h3>Thank You!</h3>
+    <p>Your submission is received. Here's your exclusive access:</p>
+    <div class="modal-btns">
+      <a href="assets/resume.pdf" download class="btn-primary full magnetic" data-cursor="hover">
+        📄 Download Resume
+      </a>
+      <a href="https://drive.google.com/drive/folders/1nHwOiO9JxubEYSoZS9RETR8q1UXLvyht?usp=drive_link" target="_blank" class="btn-ghost full magnetic" data-cursor="hover">
+        📁 Portfolio Archive
+      </a>
+    </div>
+    <button class="close-x" onclick="closeModal()" data-cursor="hover">Close</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#home" class="logo big">
+          <span class="logo-icon">◆</span>
+          <span class="logo-text">Sumit<em>.Devani</em></span>
+        </a>
+        <p>Video Editor · Motion · Design · 3D<br/>Crafted from India, delivered worldwide.</p>
+        <a href="#contact" class="btn-primary magnetic" data-cursor="hover">
+          <span>Start a Project</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>
+      </div>
+
+      <div class="footer-cols">
+        <div>
+          <h4>Menu</h4>
+          <a href="#reel" data-cursor="hover">Video Reel</a>
+          <a href="#services" data-cursor="hover">Services</a>
+          <a href="#influencer" data-cursor="hover">Influencer</a>
+          <a href="#skills" data-cursor="hover">Skills</a>
+        </div>
+        <div>
+          <h4>Social</h4>
+          <a href="https://www.instagram.com/smeet_devani/?hl=en" target="_blank" data-cursor="hover">Instagram</a>
+          <a href="https://www.instagram.com/3.45am.stories/?hl=en" target="_blank" data-cursor="hover">3.45am.stories</a>
+          <a href="https://www.linkedin.com/in/sumitdevani/" target="_blank" data-cursor="hover">LinkedIn</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a href="https://wa.me/919313429998" target="_blank" data-cursor="hover">WhatsApp</a>
+          <a href="tel:+919313429998" data-cursor="hover">+91 93134 29998</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-big">SUMIT<em>DEVANI</em></div>
+    <p class="copy">© 2025 Sumit Devani. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
