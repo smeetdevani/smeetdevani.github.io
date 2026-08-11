@@ -8,7 +8,7 @@ window.addEventListener('load', () => {
 });
 
 // ============================================
-// CUSTOM CURSOR (Smooth follow with lerp)
+// CUSTOM CURSOR
 // ============================================
 const cursorDot = document.getElementById('cursorDot');
 const cursorRing = document.getElementById('cursorRing');
@@ -23,10 +23,8 @@ document.addEventListener('mousemove', (e) => {
 });
 
 function animateCursor(){
-  // Dot follows instantly
   dotX += (mouseX - dotX) * 0.9;
   dotY += (mouseY - dotY) * 0.9;
-  // Ring follows smoothly
   ringX += (mouseX - ringX) * 0.15;
   ringY += (mouseY - ringY) * 0.15;
 
@@ -75,7 +73,7 @@ document.querySelectorAll('.magnetic').forEach(btn => {
 });
 
 // ============================================
-// SCROLL REVEAL (IntersectionObserver)
+// SCROLL REVEAL
 // ============================================
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -104,7 +102,7 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 // ============================================
-// COUNTER ANIMATION (stats)
+// COUNTER ANIMATION
 // ============================================
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -166,7 +164,7 @@ function positionCoverflow(name){
     card.style.zIndex = 100 - abs;
     card.classList.toggle('active', isActive);
 
-    // Lazy load iframe (only active + 2 neighbors)
+    // Lazy load iframe
     const iframe = card.querySelector('iframe');
     if(iframe){
       if(abs <= 2){
@@ -204,24 +202,81 @@ Object.keys(coverflows).forEach(name => {
   positionCoverflow(name);
 });
 
-// Touch swipe
+// ============================================
+// MOUSE WHEEL SCROLL on COVERFLOW
+// ============================================
 Object.keys(coverflows).forEach(name => {
   const cf = coverflows[name];
   if(!cf.el) return;
-  let startX = 0, endX = 0;
-  cf.el.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, {passive:true});
-  cf.el.addEventListener('touchend', (e) => {
-    endX = e.changedTouches[0].clientX;
-    const diff = startX - endX;
-    if(Math.abs(diff) > 40) cfMove(name, diff > 0 ? 1 : -1);
-  });
+  const wrap = cf.el.closest('.cf-wrap');
+  if(!wrap) return;
+
+  let wheelTimeout = null;
+  let wheelLocked = false;
+
+  wrap.addEventListener('wheel', (e) => {
+    const deltaX = Math.abs(e.deltaX);
+    const deltaY = Math.abs(e.deltaY);
+    const delta = deltaX > deltaY ? e.deltaX : e.deltaY;
+
+    if(Math.abs(delta) < 5) return;
+    e.preventDefault();
+
+    if(wheelLocked) return;
+    wheelLocked = true;
+
+    const dir = delta > 0 ? 1 : -1;
+    cfMove(name, dir);
+
+    clearTimeout(wheelTimeout);
+    wheelTimeout = setTimeout(() => {
+      wheelLocked = false;
+    }, 500);
+  }, { passive: false });
 });
 
-// Keyboard arrows
+// ============================================
+// TOUCH SWIPE with velocity
+// ============================================
+Object.keys(coverflows).forEach(name => {
+  const cf = coverflows[name];
+  if(!cf.el) return;
+
+  let touchStartX = 0;
+  let touchStartTime = 0;
+  let isSwiping = false;
+
+  cf.el.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartTime = Date.now();
+    isSwiping = false;
+  }, { passive: true });
+
+  cf.el.addEventListener('touchmove', (e) => {
+    const currentX = e.touches[0].clientX;
+    if(Math.abs(currentX - touchStartX) > 10) isSwiping = true;
+  }, { passive: true });
+
+  cf.el.addEventListener('touchend', (e) => {
+    if(!isSwiping) return;
+    const endX = e.changedTouches[0].clientX;
+    const diff = touchStartX - endX;
+    const elapsed = Date.now() - touchStartTime;
+    const velocity = Math.abs(diff) / elapsed;
+
+    if(Math.abs(diff) > 40 || velocity > 0.3){
+      cfMove(name, diff > 0 ? 1 : -1);
+    }
+  }, { passive: true });
+});
+
+// ============================================
+// KEYBOARD ARROWS for coverflow
+// ============================================
 document.addEventListener('keydown', (e) => {
   if(e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
   const dir = e.key === 'ArrowLeft' ? -1 : 1;
-  // Find which coverflow is most in view
+
   let closest = null, closestDist = Infinity;
   Object.keys(coverflows).forEach(name => {
     const cf = coverflows[name];
@@ -250,7 +305,7 @@ function toggleMute(btn, event){
 }
 
 // ============================================
-// FAQ (close others)
+// FAQ (close others when one opens)
 // ============================================
 document.querySelectorAll('.faq-item').forEach(item => {
   item.addEventListener('toggle', () => {
@@ -276,7 +331,7 @@ form.addEventListener('submit', async (e) => {
   leads.push({...data, date: new Date().toISOString()});
   localStorage.setItem('leads', JSON.stringify(leads));
 
-  // 🔧 REPLACE with your email
+  // 🔧 REPLACE with your real email
   try {
     await fetch('https://formsubmit.co/ajax/YOUR_EMAIL@example.com', {
       method: 'POST',
