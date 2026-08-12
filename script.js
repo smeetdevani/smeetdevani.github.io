@@ -278,7 +278,7 @@ if(form) {
     localStorage.setItem('leads', JSON.stringify(leads));
     
     // Send email via FormSubmit - REPLACE with your email
-    fetch('https://formsubmit.co/ajax/YOUR_EMAIL@example.com', {
+    fetch('https://formsubmit.co/ajax/sumitdevani0@gmail.com.com', {
       method: 'POST',
       headers: {'Content-Type':'application/json','Accept':'application/json'},
       body: JSON.stringify(data)
