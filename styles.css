@@ -88,80 +88,191 @@ em{font-style:normal;color:var(--muted);font-weight:400}
 .full{width:100%}
 .btn-icon{font-size:12px}
 
-/* ==================== HERO BANNER (NEW!) ==================== */
+/* ==================== HERO BANNER (FIXED!) ==================== */
 .hero-banner{
   position:relative;
   width:100%;
   height:100vh;
-  min-height:600px;
-  max-height:1000px;
+  min-height:700px;
+  max-height:1100px;
   overflow:hidden;
   display:flex;
-  align-items:flex-end;
+  align-items:center;
   justify-content:center;
+  background:#000;
 }
+
 .banner-image{
   position:absolute;
-  inset:0;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
   z-index:1;
   animation:bannerZoom 20s ease-in-out infinite alternate;
   will-change:transform;
 }
+
 .banner-image img{
   width:100%;
   height:100%;
   object-fit:cover;
-  object-position:center;
+  object-position:center center;
   display:block;
 }
+
 @keyframes bannerZoom{
   0%{transform:scale(1)}
   100%{transform:scale(1.08)}
 }
+
 .banner-overlay{
   position:absolute;
-  inset:0;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
   background:linear-gradient(180deg,
-    rgba(6,6,9,.3) 0%,
-    rgba(6,6,9,.1) 40%,
-    rgba(6,6,9,.5) 80%,
-    rgba(6,6,9,.95) 100%);
+    rgba(6,6,9,.4) 0%,
+    rgba(6,6,9,.1) 30%,
+    rgba(6,6,9,.1) 55%,
+    rgba(6,6,9,.85) 90%,
+    rgba(6,6,9,1) 100%);
   z-index:2;
+  pointer-events:none;
 }
+
 .banner-vignette{
   position:absolute;
-  inset:0;
-  background:radial-gradient(ellipse at center,transparent 40%,rgba(6,6,9,.6) 100%);
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:radial-gradient(ellipse at center,transparent 50%,rgba(6,6,9,.7) 100%);
   z-index:3;
   pointer-events:none;
 }
+
 .banner-content{
-  position:relative;
+  position:absolute;
+  bottom:80px;
+  left:50%;
+  transform:translateX(-50%);
   z-index:4;
   text-align:center;
-  padding:0 32px 100px;
+  padding:0 32px;
+  width:100%;
+  max-width:900px;
   animation:contentFadeIn 1.5s var(--ease) .8s both;
 }
-@keyframes contentFadeIn{
-  from{opacity:0;transform:translateY(30px)}
-  to{opacity:1;transform:translateY(0)}
-}
-.banner-badge{
-  display:inline-flex;align-items:center;gap:10px;
-  background:rgba(255,255,255,.08);
-  border:1px solid var(--border-strong);
-  padding:10px 22px;border-radius:100px;
-  font-size:13px;color:#fff;font-weight:500;margin-bottom:32px;
-  backdrop-filter:blur(20px);
-  box-shadow:0 10px 30px rgba(0,0,0,.3);
-}
-.pulse-dot{width:8px;height:8px;background:#5cffd4;border-radius:50%;animation:pulse 2s infinite;box-shadow:0 0 12px #5cffd4}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
-.banner-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:50px}
-.banner-scroll{display:flex;flex-direction:column;align-items:center;gap:12px;color:rgba(255,255,255,.6);font-size:11px;letter-spacing:2px;text-transform:uppercase}
-.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,#fff,transparent);animation:scrollLine 2s ease-in-out infinite}
-@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
+@keyframes contentFadeIn{
+  from{opacity:0;transform:translate(-50%,30px)}
+  to{opacity:1;transform:translate(-50%,0)}
+}
+
+.banner-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.25);
+  padding:10px 22px;
+  border-radius:100px;
+  font-size:13px;
+  color:#fff;
+  font-weight:500;
+  margin-bottom:24px;
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+.pulse-dot{
+  width:8px;
+  height:8px;
+  background:#5cffd4;
+  border-radius:50%;
+  animation:pulse 2s infinite;
+  box-shadow:0 0 12px #5cffd4;
+}
+
+@keyframes pulse{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:.5;transform:scale(1.4)}
+}
+
+.banner-cta{
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-bottom:30px;
+}
+
+.banner-scroll{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  color:rgba(255,255,255,.7);
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.scroll-line{
+  width:1px;
+  height:30px;
+  background:linear-gradient(to bottom,#fff,transparent);
+  animation:scrollLine 2s ease-in-out infinite;
+}
+
+@keyframes scrollLine{
+  0%{transform:scaleY(0);transform-origin:top}
+  50%{transform:scaleY(1);transform-origin:top}
+  51%{transform:scaleY(1);transform-origin:bottom}
+  100%{transform:scaleY(0);transform-origin:bottom}
+}
+
+/* Marquee — fixed at bottom of hero */
+.marquee{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  width:100%;
+  z-index:5;
+  overflow:hidden;
+  padding:16px 0;
+  border-top:1px solid rgba(255,255,255,.1);
+  background:rgba(6,6,9,.85);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+}
+
+.marquee-track{
+  display:flex;
+  gap:70px;
+  animation:scroll 40s linear infinite;
+  width:max-content;
+}
+
+.marquee-track span{
+  color:var(--muted);
+  font-size:14px;
+  font-weight:500;
+  white-space:nowrap;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+@keyframes scroll{
+  to{transform:translateX(-50%)}
+}
 /* Marquee */
 .marquee{position:absolute;bottom:0;left:0;right:0;z-index:5;overflow:hidden;padding:20px 0;border-top:1px solid var(--border);background:rgba(6,6,9,.7);backdrop-filter:blur(10px);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
 .marquee-track{display:flex;gap:70px;animation:scroll 40s linear infinite;width:max-content}
@@ -377,10 +488,191 @@ em{font-style:normal;color:var(--muted);font-weight:400}
 @media(max-width:768px){
   .container{padding:0 20px}
   .section{padding:70px 0}
-  .hero-banner{height:auto;min-height:100vh}
-  .banner-image{position:relative;width:100%;height:60vh}
-  .banner-image img{object-position:center center}
-  .banner-content{padding:40px 20px 100px;background:linear-gradient(180deg,transparent,var(--bg) 30%)}
+/* ==================== HERO BANNER (FIXED!) ==================== */
+.hero-banner{
+  position:relative;
+  width:100%;
+  height:100vh;
+  min-height:700px;
+  max-height:1100px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#000;
+}
+
+.banner-image{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:1;
+  animation:bannerZoom 20s ease-in-out infinite alternate;
+  will-change:transform;
+}
+
+.banner-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  display:block;
+}
+
+@keyframes bannerZoom{
+  0%{transform:scale(1)}
+  100%{transform:scale(1.08)}
+}
+
+.banner-overlay{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(180deg,
+    rgba(6,6,9,.4) 0%,
+    rgba(6,6,9,.1) 30%,
+    rgba(6,6,9,.1) 55%,
+    rgba(6,6,9,.85) 90%,
+    rgba(6,6,9,1) 100%);
+  z-index:2;
+  pointer-events:none;
+}
+
+.banner-vignette{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:radial-gradient(ellipse at center,transparent 50%,rgba(6,6,9,.7) 100%);
+  z-index:3;
+  pointer-events:none;
+}
+
+.banner-content{
+  position:absolute;
+  bottom:80px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:4;
+  text-align:center;
+  padding:0 32px;
+  width:100%;
+  max-width:900px;
+  animation:contentFadeIn 1.5s var(--ease) .8s both;
+}
+
+@keyframes contentFadeIn{
+  from{opacity:0;transform:translate(-50%,30px)}
+  to{opacity:1;transform:translate(-50%,0)}
+}
+
+.banner-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.25);
+  padding:10px 22px;
+  border-radius:100px;
+  font-size:13px;
+  color:#fff;
+  font-weight:500;
+  margin-bottom:24px;
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+.pulse-dot{
+  width:8px;
+  height:8px;
+  background:#5cffd4;
+  border-radius:50%;
+  animation:pulse 2s infinite;
+  box-shadow:0 0 12px #5cffd4;
+}
+
+@keyframes pulse{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:.5;transform:scale(1.4)}
+}
+
+.banner-cta{
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-bottom:30px;
+}
+
+.banner-scroll{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  color:rgba(255,255,255,.7);
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.scroll-line{
+  width:1px;
+  height:30px;
+  background:linear-gradient(to bottom,#fff,transparent);
+  animation:scrollLine 2s ease-in-out infinite;
+}
+
+@keyframes scrollLine{
+  0%{transform:scaleY(0);transform-origin:top}
+  50%{transform:scaleY(1);transform-origin:top}
+  51%{transform:scaleY(1);transform-origin:bottom}
+  100%{transform:scaleY(0);transform-origin:bottom}
+}
+
+/* Marquee — fixed at bottom of hero */
+.marquee{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  width:100%;
+  z-index:5;
+  overflow:hidden;
+  padding:16px 0;
+  border-top:1px solid rgba(255,255,255,.1);
+  background:rgba(6,6,9,.85);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+}
+
+.marquee-track{
+  display:flex;
+  gap:70px;
+  animation:scroll 40s linear infinite;
+  width:max-content;
+}
+
+.marquee-track span{
+  color:var(--muted);
+  font-size:14px;
+  font-weight:500;
+  white-space:nowrap;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+@keyframes scroll{
+  to{transform:translateX(-50%)}
+}
   .banner-badge{font-size:11px;padding:8px 16px;margin-bottom:24px}
   .banner-cta{gap:10px;flex-direction:column;width:100%;max-width:280px;margin:0 auto 30px}
   .banner-cta a{width:100%}
