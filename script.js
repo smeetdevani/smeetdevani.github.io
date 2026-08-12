@@ -1,80 +1,103 @@
-// your code goe// LOADER
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('loader').classList.add('done');
+// LOADER
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    var loader = document.getElementById('loader');
+    if(loader) loader.classList.add('done');
   }, 1500);
 });
 
 // CUSTOM CURSOR
-const cursorDot = document.getElementById('cursorDot');
-const cursorRing = document.getElementById('cursorRing');
-let mouseX = 0, mouseY = 0, dotX = 0, dotY = 0, ringX = 0, ringY = 0;
+var cursorDot = document.getElementById('cursorDot');
+var cursorRing = document.getElementById('cursorRing');
+var mouseX = 0, mouseY = 0, dotX = 0, dotY = 0, ringX = 0, ringY = 0;
 
-document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+document.addEventListener('mousemove', function(e) {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
 
-function animateCursor(){
+function animateCursor() {
   dotX += (mouseX - dotX) * 0.9;
   dotY += (mouseY - dotY) * 0.9;
   ringX += (mouseX - ringX) * 0.15;
   ringY += (mouseY - ringY) * 0.15;
-  cursorDot.style.transform = `translate(${dotX}px, ${dotY}px) translate(-50%, -50%)`;
-  cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+  if(cursorDot) cursorDot.style.transform = 'translate(' + dotX + 'px, ' + dotY + 'px) translate(-50%, -50%)';
+  if(cursorRing) cursorRing.style.transform = 'translate(' + ringX + 'px, ' + ringY + 'px) translate(-50%, -50%)';
   requestAnimationFrame(animateCursor);
 }
 animateCursor();
 
-document.querySelectorAll('[data-cursor]').forEach(el => {
-  const type = el.dataset.cursor;
-  el.addEventListener('mouseenter', () => { cursorRing.classList.add(type); cursorDot.classList.add(type); });
-  el.addEventListener('mouseleave', () => { cursorRing.classList.remove(type); cursorDot.classList.remove(type); });
+document.querySelectorAll('[data-cursor]').forEach(function(el) {
+  var type = el.dataset.cursor;
+  el.addEventListener('mouseenter', function() {
+    if(cursorRing) cursorRing.classList.add(type);
+    if(cursorDot) cursorDot.classList.add(type);
+  });
+  el.addEventListener('mouseleave', function() {
+    if(cursorRing) cursorRing.classList.remove(type);
+    if(cursorDot) cursorDot.classList.remove(type);
+  });
 });
 
-document.addEventListener('mouseleave', () => { cursorDot.style.opacity = 0; cursorRing.style.opacity = 0; });
-document.addEventListener('mouseenter', () => { cursorDot.style.opacity = 1; cursorRing.style.opacity = 1; });
+document.addEventListener('mouseleave', function() {
+  if(cursorDot) cursorDot.style.opacity = 0;
+  if(cursorRing) cursorRing.style.opacity = 0;
+});
+document.addEventListener('mouseenter', function() {
+  if(cursorDot) cursorDot.style.opacity = 1;
+  if(cursorRing) cursorRing.style.opacity = 1;
+});
 
 // MAGNETIC BUTTONS
-document.querySelectorAll('.magnetic').forEach(btn => {
-  btn.addEventListener('mousemove', (e) => {
-    const rect = btn.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    btn.style.transform = `translate(${x * 0.25}px, ${y * 0.35}px)`;
+document.querySelectorAll('.magnetic').forEach(function(btn) {
+  btn.addEventListener('mousemove', function(e) {
+    var rect = btn.getBoundingClientRect();
+    var x = e.clientX - rect.left - rect.width / 2;
+    var y = e.clientY - rect.top - rect.height / 2;
+    btn.style.transform = 'translate(' + (x * 0.25) + 'px, ' + (y * 0.35) + 'px)';
   });
-  btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+  btn.addEventListener('mouseleave', function() {
+    btn.style.transform = '';
+  });
 });
 
 // SCROLL REVEAL
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
+var revealObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if(entry.isIntersecting) {
       entry.target.classList.add('visible');
       revealObserver.unobserve(entry.target);
     }
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -80px 0px' });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-// NAV HIDE
-let lastScrollY = 0;
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  const y = window.scrollY;
-  if(y > 200 && y > lastScrollY) nav.classList.add('hidden');
-  else nav.classList.remove('hidden');
+document.querySelectorAll('.reveal').forEach(function(el) {
+  revealObserver.observe(el);
+});
+
+// NAV HIDE ON SCROLL
+var lastScrollY = 0;
+var nav = document.getElementById('nav');
+window.addEventListener('scroll', function() {
+  var y = window.scrollY;
+  if(nav) {
+    if(y > 200 && y > lastScrollY) nav.classList.add('hidden');
+    else nav.classList.remove('hidden');
+  }
   lastScrollY = y;
 }, { passive: true });
 
-// COUNTER
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      const el = entry.target;
-      const target = parseInt(el.dataset.target);
-      const duration = 1800;
-      const start = performance.now();
-      function tick(now){
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
+// COUNTER ANIMATION
+var counterObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if(entry.isIntersecting) {
+      var el = entry.target;
+      var target = parseInt(el.dataset.target);
+      var duration = 1800;
+      var start = performance.now();
+      function tick(now) {
+        var progress = Math.min((now - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
         el.textContent = Math.floor(target * eased);
         if(progress < 1) requestAnimationFrame(tick);
         else el.textContent = target;
@@ -84,178 +107,209 @@ const counterObserver = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.5 });
-document.querySelectorAll('.counter-num').forEach(el => counterObserver.observe(el));
+
+document.querySelectorAll('.counter-num').forEach(function(el) {
+  counterObserver.observe(el);
+});
 
 // COVERFLOW
-const coverflows = {
+var coverflows = {
   videos: { el: document.getElementById('videosCoverflow'), current: 0, counterId: 'videoCurrent', totalId: 'videoTotal' },
   graphics: { el: document.getElementById('graphicsCoverflow'), current: 0, counterId: 'graphicsCurrent', totalId: 'graphicsTotal' }
 };
 
-function positionCoverflow(name){
-  const cf = coverflows[name];
+function positionCoverflow(name) {
+  var cf = coverflows[name];
   if(!cf || !cf.el) return;
-  const cards = cf.el.querySelectorAll('.cf-card');
-  const total = cards.length;
-  document.getElementById(cf.counterId).textContent = cf.current + 1;
-  document.getElementById(cf.totalId).textContent = total;
-  const isWide = name === 'graphics';
-  const spread = isWide ? 340 : 240;
+  var cards = cf.el.querySelectorAll('.cf-card');
+  var total = cards.length;
+  var counterEl = document.getElementById(cf.counterId);
+  var totalEl = document.getElementById(cf.totalId);
+  if(counterEl) counterEl.textContent = cf.current + 1;
+  if(totalEl) totalEl.textContent = total;
+  
+  var isWide = name === 'graphics';
+  var spread = isWide ? 340 : 240;
 
-  cards.forEach((card, i) => {
-    const offset = i - cf.current;
-    const abs = Math.abs(offset);
-    const isActive = offset === 0;
-    const translateX = offset * spread;
-    const translateZ = -abs * 220;
-    const rotateY = offset * -22;
-    const scale = isActive ? 1 : Math.max(0.72, 1 - abs * 0.14);
-    const opacity = abs > 3 ? 0 : Math.max(0.35, 1 - abs * 0.22);
-    card.style.transform = `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`;
+  cards.forEach(function(card, i) {
+    var offset = i - cf.current;
+    var abs = Math.abs(offset);
+    var isActive = offset === 0;
+    var translateX = offset * spread;
+    var translateZ = -abs * 220;
+    var rotateY = offset * -22;
+    var scale = isActive ? 1 : Math.max(0.72, 1 - abs * 0.14);
+    var opacity = abs > 3 ? 0 : Math.max(0.35, 1 - abs * 0.22);
+    
+    card.style.transform = 'translateX(' + translateX + 'px) translateZ(' + translateZ + 'px) rotateY(' + rotateY + 'deg) scale(' + scale + ')';
     card.style.opacity = opacity;
-    card.style.filter = isActive ? 'none' : `blur(${abs * 1.2}px)`;
+    card.style.filter = isActive ? 'none' : 'blur(' + (abs * 1.2) + 'px)';
     card.style.zIndex = 100 - abs;
     card.classList.toggle('active', isActive);
-    const iframe = card.querySelector('iframe');
-    if(iframe){
-      if(abs <= 2){
-        if(!iframe.src || iframe.src === window.location.href || iframe.src === ''){
+    
+    var iframe = card.querySelector('iframe');
+    if(iframe) {
+      if(abs <= 2) {
+        if(!iframe.src || iframe.src === window.location.href || iframe.src === '') {
           iframe.src = card.dataset.video;
         }
-      } else if(abs > 3){
+      } else if(abs > 3) {
         iframe.src = '';
       }
     }
   });
 }
 
-function cfMove(name, dir){
-  const cf = coverflows[name];
+function cfMove(name, dir) {
+  var cf = coverflows[name];
   if(!cf) return;
-  const total = cf.el.querySelectorAll('.cf-card').length;
+  var total = cf.el.querySelectorAll('.cf-card').length;
   cf.current = (cf.current + dir + total) % total;
   positionCoverflow(name);
 }
 
-Object.keys(coverflows).forEach(name => {
-  const cf = coverflows[name];
+Object.keys(coverflows).forEach(function(name) {
+  var cf = coverflows[name];
   if(!cf.el) return;
-  const cards = cf.el.querySelectorAll('.cf-card');
-  cards.forEach((card, i) => {
-    card.addEventListener('click', () => {
-      if(i !== cf.current){ cf.current = i; positionCoverflow(name); }
+  var cards = cf.el.querySelectorAll('.cf-card');
+  cards.forEach(function(card, i) {
+    card.addEventListener('click', function() {
+      if(i !== cf.current) {
+        cf.current = i;
+        positionCoverflow(name);
+      }
     });
   });
   positionCoverflow(name);
 });
 
-// WHEEL SCROLL
-Object.keys(coverflows).forEach(name => {
-  const cf = coverflows[name];
+// MOUSE WHEEL SCROLL
+Object.keys(coverflows).forEach(function(name) {
+  var cf = coverflows[name];
   if(!cf.el) return;
-  const wrap = cf.el.closest('.cf-wrap');
+  var wrap = cf.el.closest('.cf-wrap');
   if(!wrap) return;
-  let wheelTimeout = null, wheelLocked = false;
-  wrap.addEventListener('wheel', (e) => {
-    const deltaX = Math.abs(e.deltaX);
-    const deltaY = Math.abs(e.deltaY);
-    const delta = deltaX > deltaY ? e.deltaX : e.deltaY;
+  var wheelTimeout = null;
+  var wheelLocked = false;
+  wrap.addEventListener('wheel', function(e) {
+    var deltaX = Math.abs(e.deltaX);
+    var deltaY = Math.abs(e.deltaY);
+    var delta = deltaX > deltaY ? e.deltaX : e.deltaY;
     if(Math.abs(delta) < 5) return;
     e.preventDefault();
     if(wheelLocked) return;
     wheelLocked = true;
     cfMove(name, delta > 0 ? 1 : -1);
     clearTimeout(wheelTimeout);
-    wheelTimeout = setTimeout(() => { wheelLocked = false; }, 500);
+    wheelTimeout = setTimeout(function() { wheelLocked = false; }, 500);
   }, { passive: false });
 });
 
 // TOUCH SWIPE
-Object.keys(coverflows).forEach(name => {
-  const cf = coverflows[name];
+Object.keys(coverflows).forEach(function(name) {
+  var cf = coverflows[name];
   if(!cf.el) return;
-  let touchStartX = 0, touchStartTime = 0, isSwiping = false;
-  cf.el.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; touchStartTime = Date.now(); isSwiping = false; }, { passive: true });
-  cf.el.addEventListener('touchmove', (e) => { if(Math.abs(e.touches[0].clientX - touchStartX) > 10) isSwiping = true; }, { passive: true });
-  cf.el.addEventListener('touchend', (e) => {
+  var touchStartX = 0;
+  var touchStartTime = 0;
+  var isSwiping = false;
+  cf.el.addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+    touchStartTime = Date.now();
+    isSwiping = false;
+  }, { passive: true });
+  cf.el.addEventListener('touchmove', function(e) {
+    if(Math.abs(e.touches[0].clientX - touchStartX) > 10) isSwiping = true;
+  }, { passive: true });
+  cf.el.addEventListener('touchend', function(e) {
     if(!isSwiping) return;
-    const diff = touchStartX - e.changedTouches[0].clientX;
-    const velocity = Math.abs(diff) / (Date.now() - touchStartTime);
+    var diff = touchStartX - e.changedTouches[0].clientX;
+    var velocity = Math.abs(diff) / (Date.now() - touchStartTime);
     if(Math.abs(diff) > 40 || velocity > 0.3) cfMove(name, diff > 0 ? 1 : -1);
   }, { passive: true });
 });
 
-// KEYBOARD
-document.addEventListener('keydown', (e) => {
+// KEYBOARD ARROWS
+document.addEventListener('keydown', function(e) {
   if(e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-  const dir = e.key === 'ArrowLeft' ? -1 : 1;
-  let closest = null, closestDist = Infinity;
-  Object.keys(coverflows).forEach(name => {
-    const cf = coverflows[name];
+  var dir = e.key === 'ArrowLeft' ? -1 : 1;
+  var closest = null;
+  var closestDist = Infinity;
+  Object.keys(coverflows).forEach(function(name) {
+    var cf = coverflows[name];
     if(!cf.el) return;
-    const rect = cf.el.getBoundingClientRect();
-    const dist = Math.abs(rect.top + rect.height/2 - window.innerHeight/2);
-    if(dist < closestDist){ closestDist = dist; closest = name; }
+    var rect = cf.el.getBoundingClientRect();
+    var dist = Math.abs(rect.top + rect.height/2 - window.innerHeight/2);
+    if(dist < closestDist) { closestDist = dist; closest = name; }
   });
   if(closest && closestDist < window.innerHeight/2) cfMove(closest, dir);
 });
 
-// MUTE
-function toggleMute(btn, event){
+// MUTE TOGGLE
+function toggleMute(btn, event) {
   event.stopPropagation();
-  const iframe = btn.parentElement.querySelector('iframe');
-  const src = iframe.src;
+  var iframe = btn.parentElement.querySelector('iframe');
+  var src = iframe.src;
   btn.textContent = btn.textContent === '🔊' ? '🔇' : '🔊';
   iframe.src = '';
-  setTimeout(() => { iframe.src = src; }, 50);
+  setTimeout(function() { iframe.src = src; }, 50);
 }
 
 // FAQ
-document.querySelectorAll('.faq-item').forEach(item => {
-  item.addEventListener('toggle', () => {
-    if(item.open){
-      document.querySelectorAll('.faq-item').forEach(o => {
+document.querySelectorAll('.faq-item').forEach(function(item) {
+  item.addEventListener('toggle', function() {
+    if(item.open) {
+      document.querySelectorAll('.faq-item').forEach(function(o) {
         if(o !== item) o.open = false;
       });
     }
   });
 });
 
-// FORM
-const form = document.getElementById('contactForm');
-const modal = document.getElementById('successModal');
+// CONTACT FORM
+var form = document.getElementById('contactForm');
+var modal = document.getElementById('successModal');
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const data = Object.fromEntries(new FormData(form));
-  const leads = JSON.parse(localStorage.getItem('leads') || '[]');
-  leads.push({...data, date: new Date().toISOString()});
-  localStorage.setItem('leads', JSON.stringify(leads));
-  try {
-    await fetch('https://formsubmit.co/ajax/YOUR_EMAIL@example.com', {
+if(form) {
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var data = Object.fromEntries(new FormData(form));
+    var leads = JSON.parse(localStorage.getItem('leads') || '[]');
+    leads.push(Object.assign({}, data, { date: new Date().toISOString() }));
+    localStorage.setItem('leads', JSON.stringify(leads));
+    
+    // Send email via FormSubmit - REPLACE with your email
+    fetch('https://formsubmit.co/ajax/YOUR_EMAIL@example.com', {
       method: 'POST',
       headers: {'Content-Type':'application/json','Accept':'application/json'},
       body: JSON.stringify(data)
-    });
-  } catch(err) { console.log('optional:', err); }
-  modal.classList.remove('hidden');
-  form.reset();
-});
+    }).catch(function(err) { console.log('form error:', err); });
+    
+    if(modal) modal.classList.remove('hidden');
+    form.reset();
+  });
+}
 
-function closeModal(){ modal.classList.add('hidden'); }
-modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+function closeModal() {
+  if(modal) modal.classList.add('hidden');
+}
+
+if(modal) {
+  modal.addEventListener('click', function(e) {
+    if(e.target === modal) closeModal();
+  });
+}
 
 // SMOOTH SCROLL
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', (e) => {
-    const targetId = link.getAttribute('href');
+document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+  link.addEventListener('click', function(e) {
+    var targetId = link.getAttribute('href');
     if(targetId === '#') return;
-    const target = document.querySelector(targetId);
-    if(target){
+    var target = document.querySelector(targetId);
+    if(target) {
       e.preventDefault();
-      const offset = 80;
-      const targetPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      var offset = 80;
+      var targetPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
       window.scrollTo({ top: targetPos, behavior: 'smooth' });
     }
   });
-});s here
+});
